@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Nutricional · Bioquímica & Hipertrofia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0d0b08;
+    --bg-dark: #13100c;
+    --bg-card: #1a1510;
+    --bg-card2: #201a13;
+    --bg-card3: #17130e;
+    --border: #3a2e1e;
+    --border-light: #4a3c28;
+    --gold: #c9a84c;
+    --gold-light: #e2c478;
+    --gold-dim: #8a6d2e;
+    --cream: #e8dcc8;
+    --cream-dim: #b0a080;
+    --rust: #8b3a1a;
+    --rust-light: #c05030;
+    --moss: #3a5c2a;
+    --moss-light: #5a8040;
+    --ink: #6a5a40;
+    --text-main: #d4c4a0;
+    --text-dim: #8a7860;
+    --text-bright: #ede0c4;
+    --shadow: 0 4px 32px rgba(0,0,0,0.7);
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.5);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(139,58,26,0.05) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(201,168,76,0.06) 0%, transparent 100%);
+  }
+
+  .header-ornament {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 1.2rem;
+  }
+
+  header h1 {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    color: var(--gold-light);
+    font-weight: 400;
+    line-height: 1.2;
+    text-shadow: 0 2px 24px rgba(201,168,76,0.3);
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 em {
+    display: block;
+    font-size: 0.55em;
+    color: var(--cream-dim);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    margin-top: 0.3rem;
+  }
+
+  .header-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem auto;
+    max-width: 400px;
+  }
+
+  .header-rule::before, .header-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim));
+  }
+
+  .header-rule::after {
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  .header-rule span {
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .meta-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.35rem 1rem;
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,11,8,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    padding: 0.7rem 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  nav a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid transparent;
+    transition: all 0.25s;
+    border-radius: 1px;
+  }
+
+  nav a:hover {
+    color: var(--gold);
+    border-color: var(--border-light);
+    background: var(--bg-card);
+  }
+
+  /* ── Layout ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* ── Sections ── */
+  section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  section:nth-child(1) { animation-delay: 0.1s; }
+  section:nth-child(2) { animation-delay: 0.2s; }
+  section:nth-child(3) { animation-delay: 0.3s; }
+  section:nth-child(4) { animation-delay: 0.4s; }
+  section:nth-child(5) { animation-delay: 0.5s; }
+  section:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    min-width: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.6rem;
+    margin-bottom: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .card-alt { background: var(--bg-card2); }
+  .card-alt::before { background: linear-gradient(180deg, var(--rust-light), transparent); }
+
+  .card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .card h4 {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin: 1rem 0 0.4rem;
+    font-weight: 400;
+  }
+
+  .card p, .card li {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .card ul, .card ol {
+    padding-left: 1.4rem;
+  }
+
+  .card ul li { list-style: none; padding-left: 0.5rem; }
+  .card ul li::before { content: '◆'; color: var(--gold-dim); font-size: 0.5rem; margin-right: 0.7rem; vertical-align: middle; }
+
+  /* ── Macro Grid ── */
+  .macro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .macro-box {
+    background: var(--bg-card3);
+    border: 1px solid var(--border-light);
+    padding: 1.2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .macro-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold-dim);
+  }
+
+  .macro-box.protein::after { background: var(--rust-light); }
+  .macro-box.carbs::after  { background: var(--moss-light); }
+  .macro-box.fat::after    { background: var(--gold); }
+  .macro-box.cal::after    { background: var(--gold-light); }
+
+  .macro-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .macro-value {
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1;
+    display: block;
+  }
+
+  .macro-unit {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  /* ── Schedule Table ── */
+  .schedule-wrap { overflow-x: auto; margin: 1rem 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.93rem;
+  }
+
+  thead tr {
+    background: var(--bg-card3);
+    border-bottom: 2px solid var(--gold-dim);
+  }
+
+  th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.9rem 1rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  tr:hover td { background: rgba(201,168,76,0.03); }
+
+  .time-cell {
+    color: var(--gold-dim);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 1px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .badge-gym   { background: rgba(139,58,26,0.3); color: var(--rust-light); border: 1px solid rgba(139,58,26,0.4); }
+  .badge-study { background: rgba(58,92,42,0.25); color: var(--moss-light); border: 1px solid rgba(58,92,42,0.4); }
+  .badge-rest  { background: rgba(106,90,64,0.2); color: var(--ink);        border: 1px solid rgba(106,90,64,0.3); }
+  .badge-vianda{ background: rgba(201,168,76,0.15); color: var(--gold);     border: 1px solid rgba(201,168,76,0.3); }
+
+  /* ── Two-col grid ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .two-col { grid-template-columns: 1fr; }
+    .macro-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── Shop list ── */
+  .shop-section { margin-bottom: 1rem; }
+
+  .shop-category {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .shop-category::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .shop-item {
+    background: var(--bg-card3);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.88rem;
+    color: var(--cream-dim);
+    border-radius: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .shop-item:hover { border-color: var(--gold-dim); color: var(--cream); }
+
+  /* ── Recipe cards ── */
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .recipe-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+
+  .recipe-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  .recipe-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .recipe-meta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .recipe-body {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-main);
+  }
+
+  .recipe-body ol {
+    padding-left: 1.3rem;
+    margin-top: 0.5rem;
+  }
+
+  .recipe-body li {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  /* ── Sauce spotlight ── */
+  .sauce-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .sauce-card {
+    background: var(--bg-card3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-dim);
+    padding: 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .sauce-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .sauce-kcal {
+    float: right;
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-dim);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Tip box ── */
+  .tip-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 3px solid var(--gold);
+    padding: 1.1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-style: italic;
+    color: var(--cream-dim);
+    font-size: 0.95rem;
+  }
+
+  .tip-box strong {
+    font-style: normal;
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── Supplement strip ── */
+  .supp-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .supp-item {
+    background: var(--bg-card3);
+    border: 1px solid var(--border);
+    padding: 0.9rem 1.1rem;
+    flex: 1;
+    min-width: 180px;
+    font-size: 0.9rem;
+  }
+
+  .supp-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    font-style: italic;
+    background: linear-gradient(0deg, rgba(201,168,76,0.03) 0%, transparent 100%);
+  }
+
+  footer .footer-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  footer .footer-rule::before, footer .footer-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+  /* ── Highlight text ── */
+  strong { color: var(--cream); font-weight: 600; }
+  em { color: var(--gold-dim); font-style: italic; }
+
+  .highlight {
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+  }
+
+  .text-accent { color: var(--rust-light); }
+  .text-moss { color: var(--moss-light); }
+
+  hr.ornament {
+    border: none;
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--gold-dim);
+    font-size: 1rem;
+    letter-spacing: 1em;
+    overflow: visible;
+  }
+
+  hr.ornament::before { content: '✦ ✦ ✦'; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="header-ornament">Plan Nutricional Personalizado</span>
+  <h1>
+    Bioquímica & Hipertrofia
+    <em>Nutrición de Precisión para Ganancia Muscular</em>
+  </h1>
+  <div class="header-rule"><span>✦</span></div>
+  <div class="header-meta">
+    <span class="meta-chip">45 kg · 1.63 m</span>
+    <span class="meta-chip">Superávit Calórico</span>
+    <span class="meta-chip">3× Gimnasio / Semana</span>
+    <span class="meta-chip">Omnívora · Pollo & Carnes</span>
+    <span class="meta-chip">Viandas Portátiles</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#estrategia">I. Estrategia</a>
+  <a href="#horarios">II. Horarios</a>
+  <a href="#menu">III. Menú</a>
+  <a href="#compras">IV. Compras</a>
+  <a href="#recetas">V. Recetario</a>
+  <a href="#salsas">VI. Salsas</a>
+  <a href="#suplementos">VII. Suplementos</a>
+</nav>
+
+<main>
+
+  <!-- ════════════════════════════════ I. ESTRATEGIA ════════════════════════════════ -->
+  <section id="estrategia">
+    <div class="section-header">
+      <span class="section-num">I</span>
+      <h2>Estrategia Nutricional</h2>
+    </div>
+
+    <div class="card">
+      <h3>Estimación Energética Base</h3>
+      <p>Con 45 kg de peso, 1.63 m y un nivel de actividad <strong>moderado-alto</strong> (cursada universitaria + 3 sesiones de entrenamiento), el gasto energético total diario (TDEE) estimado ronda las <strong class="highlight">1.950–2.050 kcal</strong>. Para un superávit moderado y controlado orientado a hipertrofia femenina, se apunta a <strong>+250–350 kcal</strong> sobre el TDEE.</p>
+    </div>
+
+    <div class="macro-grid">
+      <div class="macro-box cal">
+        <span class="macro-label">Calorías Diarias</span>
+        <span class="macro-value">2.300</span>
+        <span class="macro-unit">kcal objetivo</span>
+      </div>
+      <div class="macro-box protein">
+        <span class="macro-label">Proteína</span>
+        <span class="macro-value">135</span>
+        <span class="macro-unit">g/día · 3 g/kg</span>
+      </div>
+      <div class="macro-box carbs">
+        <span class="macro-label">Carbohidratos</span>
+        <span class="macro-value">270</span>
+        <span class="macro-unit">g/día · ~47%</span>
+      </div>
+      <div class="macro-box fat">
+        <span class="macro-label">Grasas</span>
+        <span class="macro-value">75</span>
+        <span class="macro-unit">g/día · ~29%</span>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Nota Metodológica</strong>
+      La proteína se fija en 3 g/kg (ligeramente elevada) para maximizar la síntesis proteica muscular en un contexto de alta carga cognitiva. Los carbohidratos priorizan el rendimiento en el entrenamiento y la función cerebral. Las grasas sostienen el perfil hormonal, clave en mujeres deportistas.
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h3>Distribución en Días de Gimnasio</h3>
+        <ul>
+          <li>Pre-entreno: +40–60 g HC rápidos</li>
+          <li>Proteína post-entreno en ventana 30–60 min</li>
+          <li>Cena con carbohidratos moderados para recuperación nocturna</li>
+        </ul>
+      </div>
+      <div class="card card-alt">
+        <h3>Distribución en Días de Cursada</h3>
+        <ul>
+          <li>Desayuno calórico y completo en casa</li>
+          <li>Vianda alta en proteína y CH complejos</li>
+          <li>Colaciones portátiles cada 3–4 hs</li>
+          <li>Cena reparadora y reconstituyente</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Principios Rectores</h3>
+      <ul>
+        <li><strong>Consistencia sobre perfección:</strong> comer bien 6 días supera al plan perfecto incumplido</li>
+        <li><strong>Batch Cooking dominical:</strong> 2 horas los domingos cubren toda la semana</li>
+        <li><strong>Densidad calórica inteligente:</strong> aceite de oliva, frutos secos y lácteos enteros suman kcal sin volumen excesivo</li>
+        <li><strong>Variedad de proteínas:</strong> rotación entre pollo, carne, huevo, yogur y legumbres evita la monotonía</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ II. HORARIOS ════════════════════════════════ -->
+  <section id="horarios">
+    <div class="section-header">
+      <span class="section-num">II</span>
+      <h2>Esquema Semanal de Horarios</h2>
+    </div>
+
+    <div class="schedule-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Tipo</th>
+            <th>Actividad Principal</th>
+            <th>Estrategia Nutricional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time-cell">Lunes</td>
+            <td><span class="badge badge-gym">Gimnasio</span><span class="badge badge-study">Cursada</span></td>
+            <td>Entreno mañana temprano · Facultad 9–15:30</td>
+            <td>Pre-entreno 7:00 · Desayuno completo post-gym · Vianda para facultad</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Martes</td>
+            <td><span class="badge badge-gym">Opcional</span><span class="badge badge-study">Cursada</span></td>
+            <td>Gimnasio opcional mañana · Facultad 9–15:30</td>
+            <td>Igual que lunes si hay entreno · Si no: desayuno estándar + vianda</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Miércoles</td>
+            <td><span class="badge badge-study">Cursada</span></td>
+            <td>Facultad 9–15:30 · Tarde de estudio</td>
+            <td>Desayuno casero · Vianda completa · Colación vespertina calórica</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Jueves</td>
+            <td><span class="badge badge-gym">Gimnasio</span></td>
+            <td>Entreno 12:30–14:00 · Mañana en casa</td>
+            <td>Almuerzo pre-entreno 11:30 · Merienda proteica post 14:30 · Cena completa</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Viernes</td>
+            <td><span class="badge badge-study">Cursada</span></td>
+            <td>Facultad 9–15:30 · Tarde libre o estudio</td>
+            <td>Desayuno reforzado · Vianda · Tarde con colación calórica en casa</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Sábado</td>
+            <td><span class="badge badge-gym">Gimnasio</span></td>
+            <td>Entreno 9:00–11:00</td>
+            <td>Pre-entreno ligero 8:00 · Almuerzo post-gym completo y abundante</td>
+          </tr>
+          <tr>
+            <td class="time-cell">Domingo</td>
+            <td><span class="badge badge-rest">Descanso</span></td>
+            <td>Recuperación activa · <strong>Batch Cooking</strong></td>
+            <td>3 comidas normocalóricas · Cocinar por lotes para la semana</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ III. MENÚ ════════════════════════════════ -->
+  <section id="menu">
+    <div class="section-header">
+      <span class="section-num">III</span>
+      <h2>Menú Tipo Diario</h2>
+    </div>
+
+    <!-- DÍA DE GIMNASIO MAÑANA -->
+    <div class="card">
+      <h3>🏋 Día de Gimnasio (mañana) + Cursada · Lunes / Martes</h3>
+
+      <h4>07:00 · Pre-Entreno</h4>
+      <p>1 banana + 2 tostadas integrales con manteca de maní o crema de avellanas · <em>~250 kcal</em></p>
+
+      <h4>09:30–10:00 · Desayuno Post-Entreno (en casa o camino a facultad)</h4>
+      <p>1 vaso de leche enriquecida (250 ml) + yogur griego proteico (150 g) + 50 g avena + 1 cda miel + puñado de nueces · <em>~550 kcal | 30 g proteína</em></p>
+
+      <h4>13:00 · Almuerzo Vianda <span class="badge badge-vianda">Portátil</span></h4>
+      <p>150 g pechuga de pollo a la plancha + 150 g arroz cocido o pasta integral + ensalada de zanahoria rallada + aceite de oliva y limón + 1 fruta · <em>~600 kcal | 45 g proteína</em></p>
+
+      <h4>17:00 · Colación Vespertina</h4>
+      <p>1 barra proteica + 1 fruta + puñado de almendras · <em>~350 kcal</em></p>
+
+      <h4>20:30 · Cena</h4>
+      <p>200 g carne magra (nalga/cuadril) a la plancha + puré de zapallo con aceite de oliva + ensalada verde con tomate y palta · <em>~600 kcal | 42 g proteína</em></p>
+
+      <h4>22:30 · Pre-Sueño</h4>
+      <p>1 yogur proteico o vaso de leche + Holomagnesio · <em>~150 kcal</em></p>
+    </div>
+
+    <!-- DÍA JUEVES -->
+    <div class="card card-alt">
+      <h3>🏋 Día de Gimnasio Mediodía · Jueves</h3>
+
+      <h4>08:00 · Desayuno Completo en Casa</h4>
+      <p>3 huevos revueltos con queso + 2 tostadas integrales + vaso de leche enriquecida · <em>~580 kcal | 38 g proteína</em></p>
+
+      <h4>11:30 · Pre-Entreno (almuerzo anticipado)</h4>
+      <p>1 taza de Nestum con leche + 1 banana + 1 cda crema de maní · <em>~380 kcal</em></p>
+
+      <h4>14:30 · Post-Entreno</h4>
+      <p>Yogur griego proteico + 30 g granola o avena laminada + 1 fruta · <em>~400 kcal | 25 g proteína</em></p>
+
+      <h4>19:30 · Cena Calórica</h4>
+      <p>200 g pechuga de pollo o muslos deshuesados + 200 g papa hervida con aceite de oliva + verduras salteadas con manteca · <em>~650 kcal | 45 g proteína</em></p>
+
+      <h4>22:30 · Pre-Sueño</h4>
+      <p>1 vaso de leche + Holomagnesio · <em>~150 kcal</em></p>
+    </div>
+
+    <!-- DÍA CURSADA SIMPLE -->
+    <div class="card">
+      <h3>📚 Día de Cursada sin Entreno · Miércoles / Viernes</h3>
+
+      <h4>07:30 · Desayuno en Casa</h4>
+      <p>Bowl de Nestum con leche enriquecida + 1 huevo duro + fruta + 1 cda crema de maní · <em>~500 kcal | 22 g proteína</em></p>
+
+      <h4>13:00 · Almuerzo Vianda <span class="badge badge-vianda">Portátil</span></h4>
+      <p>150 g carne molida con condimentos + 150 g arroz con verduritas + 1 fruta + 30 g nueces · <em>~650 kcal | 40 g proteína</em></p>
+
+      <h4>17:00 · Colación de Estudio</h4>
+      <p>1 barra proteica + yogur proteico + frutos secos · <em>~400 kcal</em></p>
+
+      <h4>21:00 · Cena</h4>
+      <p>Milanesa de pollo al horno + ensalada de remolacha con zanahoria + aceite de oliva + 1 rodaja de pan integral · <em>~580 kcal | 38 g proteína</em></p>
+
+      <h4>22:30 · Pre-Sueño</h4>
+      <p>Leche o yogur + Holomagnesio · <em>~150 kcal</em></p>
+    </div>
+
+    <!-- DÍA SÁBADO -->
+    <div class="card card-alt">
+      <h3>🏋 Sábado · Entreno 9–11 hs</h3>
+
+      <h4>08:00 · Pre-Entreno</h4>
+      <p>1 banana + 30 g avena con leche (preparación rápida) · <em>~250 kcal</em></p>
+
+      <h4>11:30 · Almuerzo Post-Entreno (principal del día)</h4>
+      <p>250 g pollo a la cacerola con papas + ensalada completa con aceite generoso + palta + pan integral · <em>~750 kcal | 50 g proteína</em></p>
+
+      <h4>16:00 · Merienda Reforzada</h4>
+      <p>Tostadas con queso crema + barra proteica + fruta · <em>~450 kcal</em></p>
+
+      <h4>20:30 · Cena Libre (controlada)</h4>
+      <p>Comida social o asado familiar — priorizar proteína animal y evitar alcohol · <em>~600 kcal aprox.</em></p>
+    </div>
+
+    <div class="tip-box">
+      <strong>Vianda Inteligente: Tips de Armado</strong>
+      Usar tupper hermético de 2 compartimentos. Arroz o pasta cocida (conserva frío/caliente). Proteína en cuadraditos o tiras (fácil de pinchar con tenedor). Sazonar en casa con aceite de oliva + limón + sal. Las salsas (ver Sección VI) pueden llevarse en potes pequeños por separado para sumar sabor y calorías on-the-go.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ IV. LISTA DE COMPRAS ════════════════════════════════ -->
+  <section id="compras">
+    <div class="section-header">
+      <span class="section-num">IV</span>
+      <h2>Lista de Compras Optimizada</h2>
+    </div>
+
+    <div class="card">
+      <h3>🗓 Compra Grande Mensual · Dietética y Secos</h3>
+      <p style="margin-bottom:1rem; font-size:0.9rem; color:var(--text-dim); font-style:italic;">Productos de larga duración. Comprar en dietética o súper grande 1×/mes.</p>
+
+      <div class="shop-section">
+        <div class="shop-category">Cereales y Féculas</div>
+        <div class="shop-items">
+          <span class="shop-item">Avena laminada (1 kg)</span>
+          <span class="shop-item">Arroz blanco/integral (2 kg)</span>
+          <span class="shop-item">Fideos integrales (1 kg)</span>
+          <span class="shop-item">Nestum (500 g)</span>
+          <span class="shop-item">Galletas de arroz</span>
+          <span class="shop-item">Polenta (500 g)</span>
+        </div>
+
+        <div class="shop-category">Proteínas Secas y Conservas</div>
+        <div class="shop-items">
+          <span class="shop-item">Atún al natural (6 latas)</span>
+          <span class="shop-item">Lentejas (500 g)</span>
+          <span class="shop-item">Garbanzos (500 g)</span>
+          <span class="shop-item">Porotos negros (500 g)</span>
+        </div>
+
+        <div class="shop-category">Frutos Secos y Aceites</div>
+        <div class="shop-items">
+          <span class="shop-item">Nueces peladas (500 g)</span>
+          <span class="shop-item">Almendras (500 g)</span>
+          <span class="shop-item">Manteca de maní (frasco grande)</span>
+          <span class="shop-item">Aceite de oliva extra virgen (500 ml)</span>
+          <span class="shop-item">Aceite de girasol (1 l)</span>
+        </div>
+
+        <div class="shop-category">Dietética Específica</div>
+        <div class="shop-items">
+          <span class="shop-item">Barras proteicas (caja × 12)</span>
+          <span class="shop-item">Holomagnesio (frasco mensual)</span>
+          <span class="shop-item">Granola sin azúcar (500 g)</span>
+          <span class="shop-item">Semillas de chía (300 g)</span>
+          <span class="shop-item">Semillas de lino (300 g)</span>
+          <span class="shop-item">Cacao amargo en polvo (200 g)</span>
+        </div>
+
+        <div class="shop-category">Condimentos y Extras</div>
+        <div class="shop-items">
+          <span class="shop-item">Miel (frasco)</span>
+          <span class="shop-item">Salsa de soja baja en sodio</span>
+          <span class="shop-item">Mostaza dijon</span>
+          <span class="shop-item">Vinagre de manzana</span>
+          <span class="shop-item">Orégano, pimentón, comino</span>
+          <span class="shop-item">Sal y pimienta negra</span>
+          <span class="shop-item">Caldo en cubo (s/sal)</span>
+          <span class="shop-item">Pasta de tomate (tetra)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-alt">
+      <h3>🛒 Reposición Semanal / Quincenal · Frescos y Perecederos</h3>
+      <p style="margin-bottom:1rem; font-size:0.9rem; color:var(--text-dim); font-style:italic;">Comprar en carnicería, verdulería y súper de barrio. Reposición 1–2 veces por semana.</p>
+
+      <div class="shop-section">
+        <div class="shop-category">Carnes (compra semanal)</div>
+        <div class="shop-items">
+          <span class="shop-item">Pechuga de pollo (1 kg)</span>
+          <span class="shop-item">Muslos de pollo s/hueso (500 g)</span>
+          <span class="shop-item">Carne molida magra (500 g)</span>
+          <span class="shop-item">Nalga o cuadril (500 g)</span>
+          <span class="shop-item">Huevos (docena)</span>
+        </div>
+
+        <div class="shop-category">Lácteos (semanal)</div>
+        <div class="shop-items">
+          <span class="shop-item">Leche enriquecida en proteína (2 l)</span>
+          <span class="shop-item">Yogur proteico/griego (4–6 unid.)</span>
+          <span class="shop-item">Queso cremoso (250 g)</span>
+          <span class="shop-item">Queso rallado (150 g)</span>
+          <span class="shop-item">Manteca (100 g)</span>
+        </div>
+
+        <div class="shop-category">Verduras y Frutas (2×/semana)</div>
+        <div class="shop-items">
+          <span class="shop-item">Bananas (6 unid.)</span>
+          <span class="shop-item">Manzanas o peras (4 unid.)</span>
+          <span class="shop-item">Palta (2 unid.)</span>
+          <span class="shop-item">Papa (1 kg)</span>
+          <span class="shop-item">Zapallo (½ unid.)</span>
+          <span class="shop-item">Zanahoria (500 g)</span>
+          <span class="shop-item">Tomate (500 g)</span>
+          <span class="shop-item">Lechuga o rúcula (1 paq.)</span>
+          <span class="shop-item">Cebolla (500 g)</span>
+          <span class="shop-item">Ajo (cabeza)</span>
+          <span class="shop-item">Limones (4 unid.)</span>
+        </div>
+
+        <div class="shop-category">Panadería (semanal)</div>
+        <div class="shop-items">
+          <span class="shop-item">Pan integral (500 g)</span>
+          <span class="shop-item">Tostadas integrales (paquete)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ V. RECETARIO ════════════════════════════════ -->
+  <section id="recetas">
+    <div class="section-header">
+      <span class="section-num">V</span>
+      <h2>Recetario Práctico · Batch Cooking</h2>
+    </div>
+
+    <div class="tip-box">
+      <strong>Protocolo Dominical · 2 Horas</strong>
+      Cocinar en simultáneo: (1) arroz al fuego, (2) carnes al horno, (3) verduras hervidas. La producción cubre almuerzo y cenas de lunes a miércoles. Guardar todo en tuppers identificados con el día. Las salsas se hacen en 10 min y se guardan aparte.
+    </div>
+
+    <div class="recipe-grid">
+
+      <div class="recipe-card">
+        <p class="recipe-title">Pollo a la Italiana — Batch</p>
+        <div class="recipe-meta">
+          <span>⏱ 35 min horno</span>
+          <span>🍽 4 raciones</span>
+          <span class="text-accent">~42g prot/ración</span>
+        </div>
+        <div class="recipe-body">
+          <p>1 kg pechuga entera. Marinar 15 min en jugo de limón + ajo + sal + orégano + aceite de oliva. Cocinar tapado en horno 200°C por 25 min, destapar 10 min más. Rebanar frío, conservar en tupper con el jugo de cocción.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Carne Molida Versátil</p>
+        <div class="recipe-meta">
+          <span>⏱ 20 min</span>
+          <span>🍽 4 raciones</span>
+          <span class="text-accent">~35g prot/ración</span>
+        </div>
+        <div class="recipe-body">
+          <p>500 g carne molida + ½ cebolla + 1 diente ajo. Dorar en sartén, agregar pasta de tomate + pimentón + sal. Base neutra que sirve para vianda con arroz, relleno de tartas o tostadas.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Arroz Batata & Vegetal</p>
+        <div class="recipe-meta">
+          <span>⏱ 25 min</span>
+          <span>🍽 5 raciones</span>
+          <span class="text-moss">Base de carbohidratos</span>
+        </div>
+        <div class="recipe-body">
+          <p>2 tazas arroz + 1 zanahoria en cubos pequeños + sal + caldo. Cocinar según instrucciones. Agregar al final 1 cda aceite de oliva. Se conserva 4 días refrigerado sin perder textura.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Milanesas de Pollo al Horno</p>
+        <div class="recipe-meta">
+          <span>⏱ 30 min</span>
+          <span>🍽 6 unidades</span>
+          <span class="text-accent">~35g prot/unidad</span>
+        </div>
+        <div class="recipe-body">
+          <p>6 filetes de pechuga finos. Pasar por huevo batido + pan rallado con queso rallado + ajo en polvo. Horno 220°C, 12 min por lado. Ideales frías en la vianda, no pierden sabor.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Puré de Zapallo con Aceite</p>
+        <div class="recipe-meta">
+          <span>⏱ 25 min</span>
+          <span>🍽 4 raciones</span>
+          <span>Acompañamiento calórico</span>
+        </div>
+        <div class="recipe-body">
+          <p>500 g zapallo hervido + 1 cda aceite de oliva + pizca sal + nuez moscada. Pisarlo sin queso para que sirva como base neutra. Agregar 1 cda de crema al momento de servir para +60 kcal.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Bowl de Desayuno Express</p>
+        <div class="recipe-meta">
+          <span>⏱ 5 min</span>
+          <span>🍽 1 ración</span>
+          <span class="text-accent">~550 kcal</span>
+        </div>
+        <div class="recipe-body">
+          <p>50 g avena + 200 ml leche enriquecida (micro 2 min) + 1 yogur proteico + 1 cda miel + puñado de nueces + 1 banana en rodajas. Rápido, portátil en frasco si es necesario.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Huevos Rellenos Transportables</p>
+        <div class="recipe-meta">
+          <span>⏱ 15 min</span>
+          <span>🍽 6 mitades</span>
+          <span class="text-accent">~4g prot/unidad</span>
+        </div>
+        <div class="recipe-body">
+          <p>6 huevos duros. Partir al medio, retirar yema. Mezclar yema + atún + queso cremoso + mostaza. Rellenar y conservar en tupper. Excelente colación portátil o adicional a la vianda.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <p class="recipe-title">Sopa de Lenteja Rápida</p>
+        <div class="recipe-meta">
+          <span>⏱ 30 min</span>
+          <span>🍽 4 raciones</span>
+          <span class="text-moss">~18g prot/ración</span>
+        </div>
+        <div class="recipe-body">
+          <p>200 g lentejas lavadas + ½ cebolla + 1 zanahoria + caldo + pimentón ahumado + sal. Hervir 25 min hasta tierno. Agregar aceite de oliva al servir. Nutrición completa en un termo para llevar.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ VI. SALSAS ════════════════════════════════ -->
+  <section id="salsas">
+    <div class="section-header">
+      <span class="section-num">VI</span>
+      <h2>Salsas & Toppings Calóricos</h2>
+    </div>
+
+    <div class="card">
+      <h3>Filosofía del Topping</h3>
+      <p>Las salsas son la herramienta más poderosa del superávit calórico: suman 80–200 kcal por cucharada sin aumentar el volumen del plato ni afectar la saciedad. Se preparan en 10 minutos, duran 1 semana en la heladera y transforman una comida simple en un plato memorable.</p>
+    </div>
+
+    <div class="sauce-grid">
+
+      <div class="sauce-card">
+        <div class="sauce-name">Aderezo de Maní<span class="sauce-kcal">~120 kcal/cda</span></div>
+        <p>2 cdas manteca de maní + jugo de limón + ¼ cdita salsa de soja + pizca de ajo + agua caliente para aligerar. Ideal sobre arroz, pollo y ensaladas.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Chimichurri Cremoso<span class="sauce-kcal">~90 kcal/cda</span></div>
+        <p>Perejil picado fino + ajo + pimentón + orégano + sal + aceite de oliva generoso + vinagre de manzana. Clásico rioplatense. Sobre carnes, papas y viandas.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Mayo de Palta<span class="sauce-kcal">~100 kcal/cda</span></div>
+        <p>1 palta madura + 1 cda aceite de oliva + limón + sal + ajo en polvo. Licuar o pisarlo. Excelente como dip de verduras, tostadas o base de viandas.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Salsa Toscana de Tomate<span class="sauce-kcal">~60 kcal/cda</span></div>
+        <p>Pasta de tomate + ajo + orégano + aceite de oliva + pizca azúcar. Cocinar 8 min. Base universal para pastas, arroz, pollo y milanesas.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Yogur Especiado<span class="sauce-kcal">~45 kcal/cda</span></div>
+        <p>Yogur natural + limón + ajo en polvo + comino + menta seca. Estilo tzatziki argentino. Sobre pollo, ensaladas y viandas frías. Suma proteína extra.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Aceite de Ajo Infusionado<span class="sauce-kcal">~120 kcal/cda</span></div>
+        <p>Aceite de oliva + 4 dientes ajo laminados, calentar suave 15 min sin freír. Conservar en frasco. Sobre cualquier preparación suma sabor y calorías densas.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Topping de Frutos Secos<span class="sauce-kcal">~170 kcal/30g</span></div>
+        <p>Mix de nueces + almendras trituradas groseras + semillas de chía. Espolvorear sobre yogur, avena, ensaladas o sopas. Sin preparación previa.</p>
+      </div>
+
+      <div class="sauce-card">
+        <div class="sauce-name">Salsa Teriyaki Casera<span class="sauce-kcal">~40 kcal/cda</span></div>
+        <p>Salsa de soja + miel + ajo + jengibre en polvo + maicena para espesar. Reducir 5 min a fuego bajo. Sobre pollo o carne salteada, transforma la vianda.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ VII. SUPLEMENTOS ════════════════════════════════ -->
+  <section id="suplementos">
+    <div class="section-header">
+      <span class="section-num">VII</span>
+      <h2>Suplementación & Productos Actuales</h2>
+    </div>
+
+    <div class="supp-strip">
+      <div class="supp-item">
+        <span class="supp-name">Holomagnesio</span>
+        Tomar 30–60 min antes de dormir. El magnesio activo favorece la relajación muscular, mejora la calidad del sueño profundo (recuperación muscular) y reduce el cortisol nocturno. <strong>Mantener este hábito.</strong>
+      </div>
+      <div class="supp-item">
+        <span class="supp-name">Leche Enriquecida en Proteína</span>
+        Usar en desayuno y pre-sueño. 250 ml aporta ~12–15 g proteína adicionales. Priorizar la marca con mayor relación proteína/precio disponible en tu zona.
+      </div>
+      <div class="supp-item">
+        <span class="supp-name">Yogur Proteico / Griego</span>
+        Snack post-entreno o pre-sueño. Excelente fuente de caseína (digestión lenta, ideal de noche). Si encontrás marcas &gt;15 g prot/150g, priorizar.
+      </div>
+    </div>
+
+    <div class="supp-strip">
+      <div class="supp-item">
+        <span class="supp-name">Barras Proteicas</span>
+        Colación de emergencia entre clases o durante jornadas largas. Objetivo: &gt;15 g proteína y &lt;30 g azúcar por barra. Revisar etiqueta. 1 por día máximo.
+      </div>
+      <div class="supp-item">
+        <span class="supp-name">Nestum</span>
+        Excelente base de carbohidratos complejos. Ideal en desayuno con leche enriquecida. Aporta vitaminas del complejo B (importante para demanda cognitiva). 50–60 g por porción.
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem;">
+      <h3>Consideraciones Adicionales</h3>
+      <ul>
+        <li><strong>Vitamina D:</strong> Con horario de cursada intenso y poco sol, evaluar suplementación con el médico clínico.</li>
+        <li><strong>Hierro:</strong> Mujeres deportistas tienen mayor riesgo de déficit. Consumo de carne roja 3–4×/semana + vitamina C en la misma comida maximiza absorción.</li>
+        <li><strong>Omega-3:</strong> Si el presupuesto lo permite, complementar con aceite de lino o nueces diariamente (ya en la lista de compras).</li>
+        <li><strong>Creatina monohidratada:</strong> Suplemento con mayor evidencia en hipertrofia femenina. 3–5 g/día. Accesible en dietéticas. Opcional pero recomendada a considerar.</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <strong>Aviso Importante</strong>
+      Este plan es una guía nutricional general basada en el perfil aportado. Para un ajuste de precisión, particularmente en relación al ciclo menstrual, metabolismo y requerimientos específicos de bioquímica, se recomienda consultar con una nutricionista deportiva matriculada. Los valores calóricos son estimaciones orientativas.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-rule"><span>✦</span></div>
+  <p><em>Plan Nutricional · Bioquímica & Hipertrofia · Diseñado para consistencia, no para perfección</em></p>
+  <p style="margin-top:0.5rem; font-size:0.75rem; color:var(--ink);">Consultar siempre con profesionales de la salud antes de modificar la alimentación o suplementación</p>
+</footer>
+
+</body>
+</html>
